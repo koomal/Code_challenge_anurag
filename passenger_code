@@ -11,28 +11,52 @@ rt=[]
 for i in range(0,n):
     start='delhi'
     cost=0
-    if start in route[i]:
-        r_list=list(route[i].split(" "))
+    r_list=list(route[i].split(" "))
+    if r_list[0]==start:
+        
         cost=int(r_list[2])
         start=r_list[1]
         s=r_list[0]+">"+r_list[1]
+                          
         
-        for j in range(i+1,n):
-            if(start!='chennai'):    
-                if start in route[j]:
-                    lst=list(route[j].split(" "))
+        
+        for j in range(0,n):
+            if(start!='chennai'):
+                
+                lst=list(route[j].split(" "))
+                if lst[0]==start:
+                    #lst=list(route[j].split(" "))
                     cost+=int(lst[2])
                     start=lst[1]
                     s+=">"+lst[1]
                     if(lst[1]=='chennai'):
                         flag=1
+                        break
         s+=" "+str(cost) 
         rt.append(s)
         flag=1
-       # print(cost," ")               
-
+        print(cost," ")  
+cost_a=[]
+minval=1000
+ind=0
+for i in range(len(rt)):
+    lst_rt=rt[i].split(" ")
+    #print(lst_rt)
+    cost_v=int(lst_rt[1])
+    print(cost_v)
+    cost_a.append(cost_v)
+for i in range(len(cost_a)):
+        if(int(cost_a[i])<minval):
+            minval=cost_a[i]
+            ind=i
+    
     
 if flag==0:
     print("not reachable")
 else:
-    print("All possible combinations: ",rt)
+    print("All possible combinations: ",rt) 
+    
+       
+    print("Minimal case: ",rt[ind],"\n")
+            
+            
