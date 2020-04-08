@@ -1,0 +1,41 @@
+n=int(input())
+route=[]
+for i in range(0,n):
+    p=input()
+    route.append(p)
+start='delhi'
+cost=0
+flag=0
+rt=[]
+#ind=[]
+for i in range(0,n):
+    start='delhi'
+    cost=0
+    if start in route[i]:
+        r_list=list(route[i].split(" "))
+        cost=int(r_list[2])
+        start=r_list[1]
+        s=r_list[0]+">"+r_list[1]
+        
+        
+        for j in range(i+1,n):
+            if(start!='chennai'):
+                
+            
+                if start in route[j]:
+                    lst=list(route[j].split(" "))
+                    cost+=int(lst[2])
+                    start=lst[1]
+                    s+=">"+lst[1]
+                    if(lst[1]=='chennai'):
+                        flag=1
+        s+=" "+str(cost) 
+        rt.append(s)
+        flag=1
+        print(cost," ")               
+
+    
+if flag==0:
+    print("not reachable")
+else:
+    print("All possible combinations: ",rt)
